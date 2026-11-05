@@ -56,7 +56,7 @@ ScamShield/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone <https://github.com/ganavi74-sys/scamshield.git>
 cd ScamShield
 ```
 
