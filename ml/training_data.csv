@@ -1,0 +1,62 @@
+message,label
+"Hi, good morning! Have a wonderful day.",safe
+"See you in class tomorrow.",safe
+"Thank you for your help today.",safe
+"Your meeting is scheduled for tomorrow at 10 AM.",safe
+"Please send me the notes from today's lecture.",safe
+"Your order has been shipped and will arrive soon.",safe
+"Your appointment is confirmed for Monday.",safe
+"Can we discuss the assignment after class?",safe
+"URGENT: Your bank account will be blocked. Verify your password and OTP immediately.",scam
+"Congratulations! You won a prize. Pay a processing fee to claim it.",scam
+"Share your bank account number and OTP to receive your reward.",scam
+"Click this link immediately to prevent your account from being suspended.",scam
+"Your account has been hacked. Send your password to restore access.",scam
+"You have won a lottery. Pay a registration fee to receive the money.",scam
+"Your KYC has expired. Update your bank details immediately.",scam
+"Send your card number and CVV to confirm your refund.",scam
+
+"Could you please share the notes from yesterday's class?",safe
+"Your library book is due next Friday.",safe
+"Reminder: Our project meeting starts at 3 PM.",safe
+"Thank you for registering for the college workshop.",safe
+"Your food order is ready for pickup.",safe
+"The assignment deadline has been extended to Monday.",safe
+"Please review the document I shared with the team.",safe
+"Your electricity bill payment was received successfully.",safe
+"Happy birthday! Wishing you a wonderful year ahead.",safe
+"Can you call me when you are free?",safe
+"Your bank account will be frozen today unless you send your OTP now.",scam
+"Send your internet banking password to unlock your account.",scam
+"You have been selected for a cash reward. Pay a fee to receive it.",scam
+"Your parcel is on hold. Pay this small fee through this link immediately.",scam
+"Your account is compromised. Click here and enter your password to secure it.",scam
+"Congratulations! You won a lottery you never entered. Pay a release charge.",scam
+"Send your card number, expiry date, and CVV to process your refund.",scam
+"Your KYC will expire today. Share your banking details to avoid suspension.",scam
+"Earn a guaranteed high salary from home. Pay a registration fee to get hired.",scam
+"Your account will be permanently deleted. Verify your login credentials now.",scam
+
+"Your monthly bank statement is ready. View it in your bank's official mobile app.",safe
+"You requested a password reset. If this wasn't you, check your account through the official app.",safe
+"Your bank transaction notification is available in the mobile banking app.",safe
+"Your account security alert is ready to review. Open the official website directly.",safe
+"Your payment was successful. Keep this receipt for your records.",safe
+"Your login verification code was requested. Never share it with anyone.",safe
+"Your card payment was declined. Contact your bank using the number printed on your card.",safe
+"Your password was changed successfully. If you didn't make this change, visit the official website directly.",safe
+
+"Reply with your card PIN and CVV immediately to unblock your debit card.",scam
+"Your electricity service will be cut off today unless you pay through this link immediately.",scam
+"Your water supply will be disconnected within one hour. Pay the overdue charge using this unfamiliar link.",scam
+"To release your refund, send your full card number, expiry date, security code, and PIN.",scam
+"Your monthly bank statement is available in the official banking app.",safe
+"Your salary has been credited to your account.",safe
+"Please check your UPI payment status in the official app.",safe
+"Your password was changed successfully.",safe
+"Your college fee receipt is available in the student portal.",safe
+"give ur bank ac no 23212993873673",scam
+"Send me your OTP immediately to stop your bank account from being blocked.",scam
+"Your UPI account will be suspended. Click this link to verify your PIN.",scam
+"Congratulations! You won a cash prize. Pay a processing fee to receive it.",scam
+"Share your bank details and card CVV to receive your refund.",scam

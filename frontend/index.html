@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1a">
+<title>ScamShield | AI Security Center</title>
+
+<style>
+:root {
+    --bg: #080d1a;
+    --surface: #101829;
+    --surface-2: #151f33;
+    --surface-3: #1b2940;
+    --border: #263650;
+    --text: #edf4ff;
+    --muted: #91a2bd;
+    --blue: #55a6ff;
+    --blue-dark: #2463eb;
+    --green: #36d399;
+    --red: #fb7185;
+    --amber: #fbbf24;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background:
+        radial-gradient(ellipse at 50% -20%, #17315a 0%, transparent 55%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+button, textarea { font: inherit; }
+button { transition: all .2s ease; }
+
+header {
+    background: rgba(10, 17, 32, .92);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(16px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    font-size: 26px;
+    background: linear-gradient(145deg, #174b91, #142847);
+    border: 1px solid #3769a5;
+    box-shadow: 0 0 25px #2476d526;
+}
+
+.logo h1 {
+    font-size: 23px;
+    letter-spacing: -.7px;
+    font-weight: 750;
+}
+
+.logo h1 span { color: var(--blue); }
+
+.logo p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 1px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 13px;
+    border: 1px solid #176b51;
+    background: #10372f;
+    color: #6ee7b7;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #36d399;
+}
+
+main {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 46px 24px 35px;
+}
+
+.welcome {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #29466e;
+    background: #12233c;
+    color: #8cc5ff;
+    border-radius: 30px;
+    padding: 6px 13px;
+    font-size: 11px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    margin-bottom: 19px;
+}
+
+.welcome h2 {
+    font-size: clamp(29px, 5vw, 43px);
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+    margin-bottom: 13px;
+}
+
+.welcome h2 span {
+    background: linear-gradient(90deg, #73bcff, #8a9cff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.welcome p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.card {
+    background: linear-gradient(145deg, #121d30, #0e1727);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 27px;
+    margin-bottom: 23px;
+    box-shadow: 0 12px 35px #00000020;
+}
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 8px;
+}
+
+.heading-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid #294e80;
+    background: #142c4b;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.card h3 { font-size: 18px; font-weight: 700; }
+
+.card-description {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 21px;
+}
+
+.card-heading .card-description { margin-bottom: 0; }
+
+textarea {
+    width: 100%;
+    min-height: 180px;
+    background: #091221;
+    color: var(--text);
+    border: 1px solid #30415b;
+    border-radius: 12px;
+    padding: 17px;
+    font-size: 14px;
+    line-height: 1.7;
+    resize: vertical;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+textarea::placeholder { color: #60718c; }
+
+textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px #55a6ff19;
+}
+
+.input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.char-count { color: #8294af; font-size: 12px; }
+
+.clear-btn {
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: #c0cce0;
+    padding: 6px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.clear-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.analyze-btn {
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px 18px;
+    border: 1px solid #579fff;
+    border-radius: 10px;
+    background: linear-gradient(100deg, #2563eb, #3989f6);
+    color: white;
+    font-size: 14px;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 5px 20px #2563eb30;
+}
+
+.analyze-btn:hover {
+    filter: brightness(1.12);
+    box-shadow: 0 7px 26px #2563eb40;
+    transform: translateY(-1px);
+}
+
+.analyze-btn:disabled {
+    opacity: .65;
+    cursor: wait;
+    transform: none;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    padding: 22px;
+    color: #8cc5ff;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+#result {
+    display: none;
+    margin-top: 28px;
+    border-top: 1px solid var(--border);
+    padding-top: 27px;
+}
+
+.result-title {
+    font-size: 19px;
+    margin-bottom: 19px;
+}
+
+.risk-box {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: #0b1423;
+    margin-bottom: 24px;
+}
+
+.risk-circle {
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #101c2e;
+    border: 7px solid var(--green);
+    flex-shrink: 0;
+    box-shadow: 0 0 24px #36d39910;
+}
+
+.score { font-size: 32px; font-weight: 800; line-height: 1.2; }
+.score-small { font-size: 11px; color: var(--muted); }
+
+.risk-info { flex: 1; min-width: 0; }
+.risk-info h3 { font-size: 25px; margin-bottom: 6px; }
+.risk-info p { color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+.progress-container { margin-top: 16px; }
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #26354a;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: var(--green);
+    border-radius: 20px;
+    transition: width .5s ease;
+}
+
+.section-title { margin: 24px 0 12px; font-size: 15px; }
+
+.indicator {
+    padding: 13px 15px;
+    background: #33271c;
+    border-radius: 9px;
+    margin-bottom: 9px;
+    border: 1px solid #59412a;
+    border-left: 4px solid var(--amber);
+    color: #fbd38d;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.recommendation {
+    margin-top: 21px;
+    padding: 18px;
+    background: #122943;
+    border: 1px solid #285078;
+    border-radius: 12px;
+}
+
+.explanation-item {
+    background: rgba(20, 35, 60, 0.65);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-left: 3px solid #60a5fa;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 10px;
+}
+
+.explanation-item strong {
+    display: block;
+    color: #93c5fd;
+    font-size: 14px;
+    margin-bottom: 7px;
+    line-height: 1.5;
+}
+
+.explanation-item p {
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.recommendation strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #8cc5ff;
+    font-size: 14px;
+}
+
+.recommendation p {
+    color: #c3d5e9;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 22px;
+}
+
+.stat-box {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 12px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: #0c1626;
+}
+
+.stat-box::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: #5378a9;
+}
+
+.stat-box.high::before { background: var(--red); }
+.stat-box.medium::before { background: var(--amber); }
+.stat-box.low::before { background: var(--green); }
+
+.stat-number { font-size: 30px; font-weight: 800; line-height: 1.4; }
+.stat-label { color: var(--muted); margin-top: 5px; font-size: 12px; }
+
+.stat-box.high .stat-number { color: var(--red); }
+.stat-box.medium .stat-number { color: var(--amber); }
+.stat-box.low .stat-number { color: var(--green); }
+
+.history-clear-btn {
+    margin: 0 0 17px;
+    background: #321c29;
+    color: #fda4af;
+    border: 1px solid #633044;
+    padding: 9px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.history-clear-btn:hover {
+    background: #4a2030;
+    border-color: #a9435e;
+}
+
+.history-item {
+    padding: 17px;
+    margin-bottom: 11px;
+    background: #0c1626;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+}
+
+.history-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.history-message {
+    color: #c3d0e3;
+    font-size: 13px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.history-meta { color: #8092ad; font-size: 11px; }
+
+.risk-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .4px;
+}
+
+.details-btn {
+    margin-top: 12px;
+    padding: 8px 13px;
+    border: 1px solid #315c8c;
+    border-radius: 7px;
+    background: #142b47;
+    color: #8cc5ff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.details-btn:hover { background: #1b3b60; }
+
+.history-details {
+    display: none;
+    margin-top: 13px;
+    padding: 15px;
+    background: #101d30;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+}
+
+.history-details p { margin-top: 8px; color: #bdcce0; }
+
+.history-ml {
+    margin-top: 15px;
+    padding: 13px;
+    background: #122943;
+    border: 1px solid #285078;
+    border-radius: 9px;
+}
+
+.history-ml strong {
+    display: block;
+    color: #8cc5ff;
+    margin-bottom: 5px;
+}
+
+.history-ml p {
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+.empty-history {
+    color: #8092ad;
+    text-align: center;
+    padding: 26px 12px;
+    border: 1px dashed #30415b;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 20px;
+    color: #71839e;
+    border-top: 1px solid #1b2940;
+    font-size: 12px;
+}
+
+.footer-status {
+    color: #91a2bd;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 700px) {
+    header { padding: 14px 20px; }
+    main { padding: 32px 15px 25px; }
+    .welcome h2 { letter-spacing: -.8px; }
+    .card { padding: 19px; border-radius: 14px; }
+    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .risk-box { gap: 18px; padding: 18px; }
+}
+
+@media (max-width: 450px) {
+    .logo-icon { width: 40px; height: 40px; font-size: 22px; }
+    .logo h1 { font-size: 20px; }
+    .logo p { font-size: 10px; }
+    .status { padding: 7px 9px; font-size: 10px; }
+    .risk-box { flex-direction: column; text-align: center; }
+    .risk-info { width: 100%; }
+    .card-heading { gap: 10px; }
+    .heading-icon { width: 37px; height: 37px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">🛡️</div>
+        <div>
+            <h1>Scam<span>Shield</span></h1>
+            <p>AI Security &amp; Threat Detection</p>
+        </div>
+    </div>
+    <div class="status"><span class="status-dot"></span> Protection Active</div>
+</header>
+
+<main>
+    <section class="welcome">
+        <div class="eyebrow">✦ Personal Security Center</div>
+        <h2>Stay Ahead of <span>Digital Scams</span></h2>
+        <p>Analyze suspicious messages, uncover potential threats, and make safer decisions online.</p>
+    </section>
+
+    <section class="card">
+        <div class="card-heading">
+            <div class="heading-icon">⌕</div>
+            <div>
+                <h3>Analyze a Message</h3>
+                <p class="card-description">Inspect a suspicious SMS, WhatsApp message, email, or other text.</p>
+            </div>
+        </div>
+
+        <textarea id="message" maxlength="5000"
+            placeholder="Paste a suspicious message here...&#10;&#10;Example: URGENT! Your bank account will be blocked. Verify your password and OTP immediately by clicking this link."
+            oninput="updateCharacterCount()"></textarea>
+
+        <div class="input-footer">
+            <span class="char-count" id="charCount">0 / 5000 characters</span>
+            <button type="button" class="clear-btn" onclick="clearMessage()">✕ Clear message</button>
+        </div>
+
+        <button type="button" class="analyze-btn" id="analyzeButton" onclick="analyzeMessage()">
+            🛡️ &nbsp; Analyze Message
+        </button>
+
+        <div class="loading" id="loading">⟳ &nbsp; Analyzing message...</div>
+
+        <div id="result">
+            <div class="result-title">🛡️ Analysis Result</div>
+
+            <div class="risk-box">
+                <div class="risk-circle" id="riskCircle">
+                    <div class="score" id="riskScore">0</div>
+                    <div class="score-small">RISK SCORE / 100</div>
+                </div>
+                <div class="risk-info">
+                    <h3 id="riskLevel">UNKNOWN</h3>
+                    <p id="riskDescription">Analysis completed.</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" id="riskProgress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation" id="mlResultPanel">
+                <strong>🤖 Machine Learning Analysis</strong>
+                <p id="mlPrediction">Waiting for analysis...</p>
+                <p id="mlProbability" style="margin-top:8px"></p>
+                <p style="margin-top:8px;font-size:12px">
+                    This experimental model provides an additional signal.
+                    Its probability is not the same as the rule-based risk score
+                    or a guarantee that a message is a scam.
+                </p>
+            </div>
+
+            <h3 class="section-title">⚠️ Detected Indicators</h3>
+            <div id="indicators"></div>
+            <div id="explanations"></div>
+
+            <div class="recommendation">
+                <strong>🛡️ Safety Recommendation</strong>
+                <p id="recommendation"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card" id="statsCard">
+        <div class="card-heading">
+            <div class="heading-icon">▥</div>
+            <div>
+                <h3>Security Overview</h3>
+                <p class="card-description">A summary of your recent analysis activity.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number" id="totalAnalyses">0</div>
+                <div class="stat-label">Total Analyses</div>
+            </div>
+            <div class="stat-box high">
+                <div class="stat-number" id="highRiskCount">0</div>
+                <div class="stat-label">High Risk</div>
+            </div>
+            <div class="stat-box medium">
+                <div class="stat-number" id="mediumRiskCount">0</div>
+                <div class="stat-label">Medium Risk</div>
+            </div>
+            <div class="stat-box low">
+                <div class="stat-number" id="lowSafeCount">0</div>
+                <div class="stat-label">Low / Safe</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card" id="historyCard">
+        <div class="card-heading">
+            <div class="heading-icon">◷</div>
+            <div>
+                <h3>Recent Analyses</h3>
+                <p class="card-description">Review previous results and their detected indicators.</p>
+            </div>
+        </div>
+
+        <button type="button" class="history-clear-btn" onclick="clearHistory()">🗑 &nbsp; Clear History</button>
+        <div id="historyList"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-status">🛡️ ScamShield Security Center</div>
+    ScamShield • AI-Assisted Scam &amp; Phishing Detection
+    <p style="margin-top:6px">Always verify suspicious requests independently.</p>
+</footer>
+
+<script>
+"use strict";
+
+const HISTORY_KEY = "scamShieldHistory";
+
+/* Character counter */
+window.updateCharacterCount = function () {
+    const message = document.getElementById("message").value;
+    document.getElementById("charCount").textContent =
+        message.length + " / 5000 characters";
+};
+
+/* Clear message input */
+window.clearMessage = function () {
+    document.getElementById("message").value = "";
+    window.updateCharacterCount();
+    document.getElementById("result").style.display = "none";
+};
+
+/* Read saved history safely */
+function getHistory() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+        return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+        console.error("Could not read analysis history:", error);
+        return [];
+    }
+}
+
+/* Update dashboard statistics */
+window.updateStatistics = function () {
+    const history = getHistory();
+
+    let high = 0;
+    let medium = 0;
+    let lowSafe = 0;
+
+    history.forEach(function (item) {
+        const level = String(item.level || "").toUpperCase();
+
+        if (level === "HIGH") {
+            high++;
+        } else if (level === "MEDIUM") {
+            medium++;
+        } else {
+            lowSafe++;
+        }
+    });
+
+    document.getElementById("totalAnalyses").textContent = history.length;
+    document.getElementById("highRiskCount").textContent = high;
+    document.getElementById("mediumRiskCount").textContent = medium;
+    document.getElementById("lowSafeCount").textContent = lowSafe;
+};
+
+/* Display recent analyses */
+window.displayHistory = function () {
+    const historyList = document.getElementById("historyList");
+    const history = getHistory();
+
+    historyList.replaceChildren();
+
+    if (history.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "empty-history";
+        empty.textContent = "No analyses yet. Your completed analyses will appear here.";
+        historyList.appendChild(empty);
+        return;
+    }
+
+    history.forEach(function (item, index) {
+        const div = document.createElement("div");
+        div.className = "history-item";
+
+        const level = String(item.level || "UNKNOWN").toUpperCase();
+        let badgeColor = "#36d399";
+        let badgeBackground = "#123c35";
+
+        if (level === "HIGH") {
+            badgeColor = "#fb7185";
+            badgeBackground = "#421e2c";
+        } else if (level === "MEDIUM") {
+            badgeColor = "#fbbf24";
+            badgeBackground = "#3e3218";
+        } else if (level === "LOW") {
+            badgeColor = "#73bcff";
+            badgeBackground = "#183453";
+        }
+
+        const top = document.createElement("div");
+        top.className = "history-top";
+
+        const badge = document.createElement("span");
+        badge.className = "risk-badge";
+        badge.style.color = badgeColor;
+        badge.style.background = badgeBackground;
+        badge.textContent = level;
+
+        const score = document.createElement("strong");
+        score.textContent = (Number(item.score) || 0) + "/100";
+
+        top.append(badge, score);
+        div.appendChild(top);
+
+        const message = document.createElement("div");
+        message.className = "history-message";
+        message.textContent = item.message || "";
+        div.appendChild(message);
+
+        const indicatorCount = Array.isArray(item.indicators)
+            ? item.indicators.length
+            : (Number(item.indicators) || 0);
+
+        const meta = document.createElement("div");
+        meta.className = "history-meta";
+        meta.textContent = indicatorCount + " indicator(s) • " + (item.time || "");
+        div.appendChild(meta);
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "details-btn";
+        button.textContent = "View Details";
+        button.setAttribute("aria-expanded", "false");
+        button.onclick = function () {
+            window.toggleHistoryDetails(index);
+        };
+        div.appendChild(button);
+
+        const details = document.createElement("div");
+        details.className = "history-details";
+        details.id = "historyDetails" + index;
+
+        const heading = document.createElement("strong");
+        heading.textContent = "⚠️ Detected Indicators";
+        details.appendChild(heading);
+
+        const indicatorContainer = document.createElement("div");
+        indicatorContainer.style.margin = "8px 0";
+
+        if (Array.isArray(item.indicators) && item.indicators.length > 0) {
+            item.indicators.forEach(function (indicator) {
+                const p = document.createElement("p");
+                p.style.margin = "6px 0";
+                p.textContent = "⚠️ " + indicator;
+                indicatorContainer.appendChild(p);
+            });
+        } else {
+            indicatorContainer.textContent = Array.isArray(item.indicators)
+                ? "No indicators recorded."
+                : "Detailed indicators are unavailable for this older analysis.";
+        }
+
+        details.appendChild(indicatorContainer);
+
+        /* ML details: works for new records and older records */
+        const mlDetails = document.createElement("div");
+        mlDetails.className = "history-ml";
+
+        const mlHeading = document.createElement("strong");
+        mlHeading.textContent = "🤖 Machine Learning Analysis";
+        mlDetails.appendChild(mlHeading);
+
+        const savedPrediction = String(
+            item.mlPrediction || "UNAVAILABLE"
+        ).toUpperCase();
+
+        const predictionText = document.createElement("p");
+
+        if (savedPrediction === "SCAM" || savedPrediction === "SAFE") {
+            predictionText.textContent =
+                "Model prediction: " + savedPrediction;
+            predictionText.style.color =
+                savedPrediction === "SCAM" ? "#fb7185" : "#36d399";
+        } else {
+            predictionText.textContent =
+                "Machine-learning prediction was not saved for this analysis.";
+            predictionText.style.color = "#fbbf24";
+        }
+
+        mlDetails.appendChild(predictionText);
+
+        const probabilityText = document.createElement("p");
+        const savedProbability = item.mlProbability;
+
+        if (
+            (savedPrediction === "SCAM" || savedPrediction === "SAFE") &&
+            typeof savedProbability === "number" &&
+            Number.isFinite(savedProbability) &&
+            savedProbability >= 0 &&
+            savedProbability <= 100
+        ) {
+            probabilityText.textContent =
+                "Estimated scam probability: " +
+                savedProbability.toFixed(2) + "%";
+        } else {
+            probabilityText.textContent =
+                "ML probability is unavailable for this analysis.";
+        }
+
+        mlDetails.appendChild(probabilityText);
+
+        const mlNote = document.createElement("p");
+        mlNote.style.fontSize = "12px";
+        mlNote.textContent =
+            "This experimental model provides an additional signal. " +
+            "Its probability is different from the rule-based risk score " +
+            "and is not a guarantee that a message is a scam.";
+        mlDetails.appendChild(mlNote);
+
+        details.appendChild(mlDetails);
+
+        const recommendationTitle = document.createElement("strong");
+        recommendationTitle.textContent = "🛡️ Safety Recommendation";
+        details.appendChild(recommendationTitle);
+
+        const recommendation = document.createElement("p");
+        recommendation.style.cssText =
+            "color:#bdcce0;margin-top:6px;white-space:pre-wrap";
+        recommendation.textContent = item.recommendation ||
+            "Recommendation was not saved for this older analysis.";
+        details.appendChild(recommendation);
+
+        const summary = document.createElement("p");
+        summary.style.marginTop = "8px";
+        summary.textContent =
+            "📊 Risk Score: " + (Number(item.score) || 0) +
+            "/100 | 🚨 Risk Level: " + level;
+        details.appendChild(summary);
+
+        div.appendChild(details);
+        historyList.appendChild(div);
+    });
+};
+
+/* Open or close history details */
+window.toggleHistoryDetails = function (index) {
+    const details = document.getElementById("historyDetails" + index);
+
+    if (details) {
+        const isOpen = details.style.display === "block";
+        details.style.display = isOpen ? "none" : "block";
+
+        const button = details.previousElementSibling;
+
+        if (button) {
+            button.setAttribute("aria-expanded", String(!isOpen));
+            button.textContent = isOpen ? "View Details" : "Hide Details";
+        }
+    }
+};
+
+/* Clear saved history */
+window.clearHistory = function () {
+    if (!confirm("Are you sure you want to clear all analysis history?")) {
+        return;
+    }
+
+    localStorage.removeItem(HISTORY_KEY);
+    window.displayHistory();
+    window.updateStatistics();
+};
+
+/* Analyze using the existing Flask backend */
+window.analyzeMessage = async function () {
+    const message = document.getElementById("message").value.trim();
+
+    if (!message) {
+        alert("Please enter a message first.");
+        return;
+    }
+
+    const button = document.getElementById("analyzeButton");
+    const loading = document.getElementById("loading");
+    const result = document.getElementById("result");
+
+    button.disabled = true;
+    loading.style.display = "block";
+    result.style.display = "none";
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/analyze", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: message })
+        });
+
+        if (!response.ok) {
+            throw new Error("Backend returned HTTP " + response.status);
+        }
+
+        const data = await response.json();
+        const analysis = data.analysis;
+
+        const ml = data.ml_analysis || {
+            prediction: "UNAVAILABLE",
+            scam_probability: null
+        };
+
+        if (!analysis) {
+            throw new Error("The backend response did not contain analysis data.");
+        }
+
+        const score = Math.max(
+            0,
+            Math.min(100, Number(analysis.risk_score) || 0)
+        );
+
+        const level = String(analysis.risk_level || "LOW").toUpperCase();
+
+        const indicators = Array.isArray(analysis.indicators)
+            ? analysis.indicators
+            : [];
+
+        const explanations = Array.isArray(analysis.explanations)
+            ? analysis.explanations
+            : [];
+
+        document.getElementById("riskScore").textContent = score;
+        document.getElementById("riskLevel").textContent = level;
+        document.getElementById("riskProgress").style.width = score + "%";
+
+        /* Display ML result safely */
+        const mlPrediction = document.getElementById("mlPrediction");
+        const mlProbability = document.getElementById("mlProbability");
+        const mlPanel = document.getElementById("mlResultPanel");
+
+        const prediction = String(
+            ml.prediction || "UNAVAILABLE"
+        ).toUpperCase();
+
+        const probability = ml.scam_probability;
+
+        const validProbability =
+            typeof probability === "number" &&
+            Number.isFinite(probability) &&
+            probability >= 0 &&
+            probability <= 100;
+
+        if (
+            (prediction === "SCAM" || prediction === "SAFE") &&
+            validProbability
+        ) {
+            mlPrediction.textContent = "Model prediction: " + prediction;
+            mlPrediction.style.color =
+                prediction === "SCAM" ? "#fb7185" : "#36d399";
+
+            mlProbability.textContent =
+                "Estimated scam probability: " +
+                probability.toFixed(2) + "%";
+
+            mlPanel.style.borderColor =
+                prediction === "SCAM" ? "#633044" : "#245344";
+        } else {
+            mlPrediction.textContent =
+                "Machine-learning prediction is currently unavailable.";
+            mlPrediction.style.color = "#fbbf24";
+
+            mlProbability.textContent =
+                "The rule-based analysis is still available.";
+
+            mlPanel.style.borderColor = "#59412a";
+        }
+
+        const circle = document.getElementById("riskCircle");
+        const riskHeading = document.getElementById("riskLevel");
+        const progress = document.getElementById("riskProgress");
+
+        let color = "#36d399";
+
+        if (level === "HIGH") {
+            color = "#fb7185";
+            document.getElementById("riskDescription").textContent =
+                "This message contains indicators commonly associated with scams or phishing attempts.";
+        } else if (level === "MEDIUM") {
+            color = "#fbbf24";
+            document.getElementById("riskDescription").textContent =
+                "This message contains some suspicious characteristics. Be careful before taking action.";
+        } else {
+            document.getElementById("riskDescription").textContent =
+                "No major scam indicators were detected in this message.";
+        }
+
+        circle.style.borderColor = color;
+        riskHeading.style.color = color;
+        progress.style.background = color;
+
+        const indicatorContainer = document.getElementById("indicators");
+        indicatorContainer.replaceChildren();
+
+        if (indicators.length > 0) {
+            indicators.forEach(function (indicator) {
+                const div = document.createElement("div");
+                div.className = "indicator";
+                div.textContent = "⚠️ " + indicator;
+                indicatorContainer.appendChild(div);
+            });
+        } else {
+            const div = document.createElement("div");
+            div.className = "indicator";
+            div.style.borderLeftColor = "#36d399";
+            div.style.background = "#12332d";
+            div.style.borderColor = "#245344";
+            div.style.color = "#8de8c5";
+            div.textContent = "✓ No suspicious indicators detected.";
+            indicatorContainer.appendChild(div);
+        }
+
+        /* Display explanations for detected indicators */
+        const explanationsContainer = document.getElementById("explanations");
+        explanationsContainer.replaceChildren();
+
+        const matchedExplanations = explanations.filter(function (item) {
+            return item && indicators.includes(item.indicator);
+        });
+
+        if (matchedExplanations.length > 0) {
+            const explanationTitle = document.createElement("h3");
+            explanationTitle.className = "section-title";
+            explanationTitle.textContent = "🔎 Why These Warnings Matter";
+            explanationsContainer.appendChild(explanationTitle);
+
+            matchedExplanations.forEach(function (item) {
+                const card = document.createElement("div");
+                card.className = "explanation-item";
+
+                const heading = document.createElement("strong");
+                heading.textContent =
+                    item.indicator + " (+" + (Number(item.points) || 0) + " points)";
+
+                const reason = document.createElement("p");
+                reason.textContent = item.reason || "No explanation provided.";
+
+                card.appendChild(heading);
+                card.appendChild(reason);
+                explanationsContainer.appendChild(card);
+            });
+        }
+
+        document.getElementById("recommendation").textContent =
+            analysis.recommendation ||
+            "Stay cautious and verify unexpected requests independently.";
+
+        /* Save completed analysis, including ML result */
+        const history = getHistory();
+
+        history.unshift({
+            message: message,
+            score: score,
+            level: level,
+            indicators: indicators,
+            recommendation: analysis.recommendation || "",
+            mlPrediction: prediction,
+            mlProbability: validProbability ? probability : null,
+            time: new Date().toLocaleString()
+        });
+
+        localStorage.setItem(
+            HISTORY_KEY,
+            JSON.stringify(history.slice(0, 10))
+        );
+
+        window.displayHistory();
+        window.updateStatistics();
+
+        result.style.display = "block";
+
+    } catch (error) {
+        console.error("ScamShield analysis error:", error);
+        alert(
+            "Analysis failed. Check that the ScamShield backend is running at http://127.0.0.1:5000. Details: " +
+            error.message
+        );
+    } finally {
+        loading.style.display = "none";
+        button.disabled = false;
+    }
+};
+
+/* Load existing history and statistics */
+window.updateCharacterCount();
+window.displayHistory();
+window.updateStatistics();
+</script>
+
+</body>
+</html>

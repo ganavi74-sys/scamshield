@@ -1,0 +1,19 @@
+message,label
+"Could you bring your notebook to our study group tomorrow?",safe
+"Your monthly statement is available. Sign in through your bank's official app to view it.",safe
+"Thank you for submitting your internship application. We will contact you after review.",safe
+"Your parcel has arrived at the collection point. Check the tracking page you used when ordering.",safe
+"Please confirm whether you can attend the team meeting at 2 PM.",safe
+"Your password reset was requested. If this wasn't you, open the service's official app and review your account.",safe
+"URGENT: Send your one-time password to avoid immediate bank account closure.",scam
+"Pay a refundable joining fee today to guarantee your work-from-home job.",scam
+"You have won a prize draw you never entered. Pay tax to release your winnings.",scam
+"Your card is blocked. Reply with your PIN and CVV to reactivate it.",scam
+"An unknown person accessed your account. Send your password to this number so we can protect you.",scam
+"Your electricity connection will be disconnected in 30 minutes. Pay through this unfamiliar link now.",scam
+"Your delivery is delayed. Click this link to check the status.",borderline
+"Your bank says a transaction needs review. Please check your account.",borderline
+"Someone claiming to be from technical support asked me to install a remote-access app.",borderline
+"An online seller asks me to pay before they will share the product details.",borderline
+"Your account needs verification. Use the usual official website to review your details.",borderline
+"A recruiter says I am shortlisted but has not provided the company name yet.",borderline
